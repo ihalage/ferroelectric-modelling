@@ -13,16 +13,15 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 np.set_printoptions(threshold=np.nan)
 from sklearn.utils import shuffle
-from keras.layers import LSTM
 import keras
 # import tensorflow as tf
 # import tensorflow.contrib.layers as lays
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
-from keras.layers import Embedding
+# from keras.layers import Embedding
 from keras.layers.normalization import BatchNormalization
 from sklearn.preprocessing import MinMaxScaler
-from keras.layers import LeakyReLU
+# from keras.layers import LeakyReLU
 # import pydot as pyd
 # import pydotplus
 from keras.layers import Input, Dense
