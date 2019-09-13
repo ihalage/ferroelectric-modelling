@@ -25,6 +25,7 @@ np.set_printoptions(threshold=np.nan)
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from keras.models import load_model
+from keras.callbacks import ModelCheckpoint
 import matplotlib.pyplot as plt
 import keras
 # from keras.layers import Input, Dense
@@ -140,7 +141,11 @@ def retrain(learn_rate, batch_size):
 		              loss='mean_squared_error',
 		              metrics=['mse'])
 		print model.summary()
-		model.fit(np.array(train_xs), [np.array(train_ys['tunability']),np.array(train_ys['loss'])], batch_size=batch_size, validation_split=0.1, epochs=200)
+
+		filepath='saved_model/bst_mg_run_best.h5'
+		checkpointer = ModelCheckpoint(filepath=filepath, verbose=1, save_best_only=True)
+		
+		model.fit(np.array(train_xs), [np.array(train_ys['tunability']),np.array(train_ys['loss'])], batch_size=batch_size, validation_split=0.1, epochs=200, callbacks=[checkpointer])
 		model.save('saved_model/bst_mg_run.h5')
 
 
